@@ -1,5 +1,4 @@
 'use strict';
-/*eslint-env es6*/
 
 const $errors = {
   noTrip: {
@@ -51,7 +50,7 @@ class TripPlanner {
       }
     })
   }
-  // Give any card an unique identifier (ID)
+  // Give any card an unique identifier
   _formatCards () {
     this.cards.map((card, index) => card.id = index)
   }
