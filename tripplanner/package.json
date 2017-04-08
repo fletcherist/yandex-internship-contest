@@ -1,0 +1,17 @@
+{
+  "name": "tripplanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack": "^2.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  },
+  "scripts": {
+    "start": "node node_modules/webpack/bin/webpack.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
