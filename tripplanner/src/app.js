@@ -36,34 +36,36 @@ class TripPlanner {
 
   _validateCards () {
     this.cards.map(card => {
-      let error = null
-      if (!card.from) error = 'noFrom'
-      else if (!card.to) error = 'noTo'
-      else if (!card.transportType) error = 'noTransport'
+      let _error = null
+      if (!card.from) _error = 'noFrom'
+      else if (!card.to) _error = 'noTo'
+      else if (!card.transportType) _error = 'noTransport'
 
-      if (error) {
+      if (_error) {
         throw new Error(
           $errors.invalidCard.common +
           JSON.stringify(card, {}, 4) + '\n' +
-          $errors.invalidCard[error]
+          $errors.invalidCard[_error]
         )
       }
     })
   }
+
   // Give any card an unique identifier
   _formatCards () {
     this.cards.map((card, index) => card.id = index)
   }
 
   _sortCards () {
-    const cardsTable = {}
-    for (let card of this.cards) {
-      cardsTable[card.from] = {
-        to: card.to,
-        id: card.id
-      }
+    const tables = {
+      from: {},
+      to: {}
     }
-    console.log(cardsTable)
+    for (const card of this.cards) {
+      tables.from[card.from] = card
+      tables.to[card.to] = card
+    }
+    console.log(tables)
   }
 }
 
