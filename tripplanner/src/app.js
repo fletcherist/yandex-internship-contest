@@ -7,7 +7,7 @@ const $errors = {
   },
   invalidCard: {
     common: `The following card is invalid: \n`,
-    noFrom: 'Missing starting location. Please, provide starting location [from]',
+    noFrom: 'Missing starting location. Please, provide starting location [startingPoint]',
     noTo: 'Missing destination place. Please, provide destination place [to]',
     noTransport: 'Missing transport type. Please, provide transport type [transportType]'
   }
@@ -24,7 +24,7 @@ class TripPlanner {
     }
 
     this.cards = cards
-    this.sortedCards = cards
+    this.sortedCards = []
 
     this._validateCards()
     this._formatCards()
@@ -37,8 +37,8 @@ class TripPlanner {
   _validateCards () {
     this.cards.map(card => {
       let _error = null
-      if (!card.from) _error = 'noFrom'
-      else if (!card.to) _error = 'noTo'
+      if (!card.startingPoint) _error = 'noFrom'
+      else if (!card.destinationPoint) _error = 'noTo'
       else if (!card.transportType) _error = 'noTransport'
 
       if (_error) {
@@ -58,20 +58,31 @@ class TripPlanner {
 
   _sortCards () {
     const tables = {
-      from: {},
-      to: {}
+      startingPoint: {},
+      destinationPoint: {}
     }
     for (const card of this.cards) {
-      tables.from[card.from] = card
-      tables.to[card.to] = card
+      tables.startingPoint[card.startingPoint] = card
+      tables.destinationPoint[card.destinationPoint] = card
     }
+
     console.log(tables)
+
+    for (const key in tables.startingPoint) {
+      if (!tables.destinationPoint.hasOwnProperty(key)) {
+        this.sortedCards.push(tables.startingPoint[key])
+        break
+      }
+    }
+    console.log(this.sortedCards)
+
+
   }
 }
 
 const card = {
-  from: 'Madrid',
-  to: 'Barcelona',
+  startingPoint: 'Madrid',
+  destinationPoint: 'Barcelona',
   transportType: 'train',
   additionalInfo: {
     seat: '45B'
@@ -79,16 +90,16 @@ const card = {
 }
 
 const card2 = {
-  from: 'Barcelona',
-  to: 'Gerona Airport',
+  startingPoint: 'Barcelona',
+  destinationPoint: 'Gerona Airport',
   transportType: 'airport bus',
   additionalInfo: {
   }
 }
 
 const card3 = {
-  from: 'Gerona Airport',
-  to: 'Stockholm',
+  startingPoint: 'Gerona Airport',
+  destinationPoint: 'Stockholm',
   transportType: 'aircraft',
   additionalInfo: {
     gate: '45B',
@@ -99,7 +110,7 @@ const card3 = {
 
 const tripCards = {
   params: null,
-  cards: [card, card2, card3]
+  cards: [card2, card, card3]
 }
 
 const planner = new TripPlanner(tripCards)
