@@ -13,6 +13,19 @@ P.S. Это прекрасно, что путешественник владее
 
 То же самое можно сказать и о последней карточке путешествия —
 
+**O(n)**
+```javascript
+const tables = {
+  startingPoint: {},
+  destinationPoint: {}
+}
+
+for (const card of this.cards) {
+  tables.startingPoint[card.startingPoint] = card
+  tables.destinationPoint[card.destinationPoint] = card
+}
+```
+
 Дальше задача сводится к поиску таких двух карточек, что **(место отправления одной)** `===` **(месту прибытия другой)** — другими словами, необходимо собрать из нашего массива граф.
 
 
