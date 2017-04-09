@@ -74,6 +74,13 @@ class TripPlanner {
         break
       }
     }
+
+    for (let i = 0; i < this.sortedCards.length; i++) {
+      const currentDestinationPoint = this.sortedCards[i].destinationPoint
+      const nextCard = tables.startingPoint[currentDestinationPoint]
+      console.log(nextCard)
+      this.sortedCards.push(nextCard)
+    }
     console.log(this.sortedCards)
 
 
