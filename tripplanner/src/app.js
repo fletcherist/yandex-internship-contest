@@ -1,5 +1,3 @@
-'use strict';
-
 const $errors = {
   noTrip: {
     cards: `No any travel cards provided to the constructor. \n Please, provide some travel cards.`
@@ -83,19 +81,25 @@ class TripPlanner {
     for (const card of this.sortedCards) {
       instructions.push(this._composePassage(card))
     }
-    console.log(instructions)
+
+    return instructions
   }
 
   renderToHTML () {
+    const instructions = []
+    for (const card of this.sortedCards) {
+      instructions.push(this._composePassage(card, true))
+    }
 
+    const html = instructions.join('\n')
+    return html
   }
 
   _composePassage (card, html) {
     const {
       startingPoint,
       destinationPoint,
-      transportType,
-      additionalInfo, id
+      id
     } = card
 
     if (!html) html = false
@@ -108,9 +112,29 @@ class TripPlanner {
     // Make it more human-friendly,
     // as in the example
     if (id % 3 === 0) {
-      passage = `From ${startingPoint}, take ${transport} to ${destinationPoint}. ${additional}`
+      if (html) {
+        passage = `
+          <div>
+            From <span data-start='1'>${startingPoint}</span>
+            take <span data-transport='1'>${transport}</span>
+            to <span data-destination='1'>${destinationPoint}</span>.
+            <span data-additional='1'>${additional}</span>
+          </div>`
+      } else {
+        passage = `From ${startingPoint}, take ${transport} to ${destinationPoint}. ${additional}`
+      }
     } else {
-      passage = `Take ${transport} from ${startingPoint} to ${destinationPoint}. ${additional}`
+      if (html) {
+        passage = `
+          <div>
+            Take <span data-transport='1'>${transport}</span> from
+            <span data-start='1'>${startingPoint}</span> to
+            <span data-destination='1'>${destinationPoint}</span>.
+            <span data-additional='1'>${additional}</span>
+          </div>`
+      } else {
+        passage = `Take ${transport} from ${startingPoint} to ${destinationPoint}. ${additional}`
+      }
     }
 
     passage = passage.trim()
@@ -177,36 +201,4 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const card = {
-  startingPoint: 'Madrid',
-  destinationPoint: 'Barcelona',
-  transportType: 'train',
-  additionalInfo: {
-    id: '78A',
-    seat: '45B'
-  }
-}
-
-const card2 = {
-  startingPoint: 'Barcelona',
-  destinationPoint: 'Gerona Airport',
-  transportType: 'airport bus',
-  additionalInfo: {
-  }
-}
-
-const card3 = {
-  startingPoint: 'Gerona Airport',
-  destinationPoint: 'Stockholm',
-  transportType: 'aircraft',
-  additionalInfo: {
-    gate: '45B',
-    seat: '3A',
-    baggage: '344'
-  }
-}
-
-const tripCards = [card2, card, card3]
-
-const planner = new TripPlanner(tripCards)
-planner.planTrip().render()
+window.TripPlanner = TripPlanner
