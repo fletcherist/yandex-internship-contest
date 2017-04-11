@@ -79,16 +79,18 @@ class TripPlanner {
   }
 
   render () {
+    const instructions = []
     for (const card of this.sortedCards) {
-      this._composePassage(card)
+      instructions.push(this._composePassage(card))
     }
+    console.log(instructions)
   }
 
   renderToHTML () {
 
   }
 
-  _composePassage (card) {
+  _composePassage (card, html) {
     const {
       startingPoint,
       destinationPoint,
@@ -96,17 +98,22 @@ class TripPlanner {
       additionalInfo, id
     } = card
 
+    if (!html) html = false
+
     let passage = ``
-    // Take is first
+
     const transport = this._formatTransport(card)
     const additional = this._formatAdditionalInformation(card)
+
+    // Make it more human-friendly,
+    // as in the example
     if (id % 3 === 0) {
       passage = `From ${startingPoint}, take ${transport} to ${destinationPoint}. ${additional}`
     } else {
-      passage = `Take ${transport} from ${startingPoint} to ${destinationPoint}`
+      passage = `Take ${transport} from ${startingPoint} to ${destinationPoint}. ${additional}`
     }
-    console.log(passage)
 
+    passage = passage.trim()
     return passage
   }
 
@@ -138,7 +145,36 @@ class TripPlanner {
 
   _formatAdditionalInformation (card) {
     const { additionalInfo } = card
+    let formattedInfo = ``
+
+    for (const info in additionalInfo) {
+      if (info) {
+        switch (info) {
+          case 'id':
+          break
+          case 'baggage':
+            // using `var` keyword instead of `let` here because of the linting errors
+            var baggage = additionalInfo[info]
+            if (baggage === 'auto') {
+              formattedInfo += `Baggage will be automatically transferred from your last leg.`
+            } else {
+              formattedInfo += `Baggage drop at ticket counter ${additionalInfo[info]}`
+            }
+          break
+          default:
+            formattedInfo += `${capitalizeFirstLetter(info)} ${additionalInfo[info]}. `
+          break
+        }
+      }
+    }
+
+    formattedInfo = formattedInfo.trim()
+    return formattedInfo
   }
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 const card = {
