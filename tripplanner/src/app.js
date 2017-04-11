@@ -2,7 +2,6 @@
 
 const $errors = {
   noTrip: {
-    arguments: `No any trip aguments provided to the constructor. \nPlease, provide some travel cards.`,
     cards: `No any travel cards provided to the constructor. \n Please, provide some travel cards.`
   },
   invalidCard: {
@@ -14,11 +13,7 @@ const $errors = {
 }
 
 class TripPlanner {
-  constructor (trip) {
-    if (!trip) {
-      throw new Error($errors.noTrip.arguments)
-    }
-    const { cards, params } = trip
+  constructor (cards) {
     if (!cards) {
       throw new Error($errors.noTrip.cards)
     }
@@ -32,6 +27,7 @@ class TripPlanner {
 
   planTrip () {
     this._sortCards()
+    return this
   }
 
   _validateCards () {
@@ -78,8 +74,32 @@ class TripPlanner {
       const nextCard = tables.startingPoint[currentCard.destinationPoint]
       this.sortedCards.push(nextCard)
     }
+  }
 
-    console.log(this.sortedCards)
+  render () {
+    for (const card of this.sortedCards) {
+      this._composePassage(card)
+    }
+  }
+
+  renderToHTML () {
+
+  }
+
+  _composePassage (card) {
+    const {
+      startingPoint,
+      destinationPoint,
+      transportType,
+      additionalInfo, id
+    } = card
+
+    let passage = ``
+    // Take is first
+    if (id % 3 === 0) {
+      passage = 'From ${startingPoint} '
+    }
+
   }
 }
 
@@ -111,10 +131,7 @@ const card3 = {
   }
 }
 
-const tripCards = {
-  params: null,
-  cards: [card2, card, card3]
-}
+const tripCards = [card2, card, card3]
 
 const planner = new TripPlanner(tripCards)
-planner.planTrip()
+planner.planTrip().render()
