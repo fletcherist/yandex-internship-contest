@@ -44,6 +44,8 @@ class TripPlanner {
           $errors.invalidCard[_error]
         )
       }
+
+      card.transportType = card.transportType.toLowerCase()
     })
   }
 
@@ -96,10 +98,46 @@ class TripPlanner {
 
     let passage = ``
     // Take is first
+    const transport = this._formatTransport(card)
+    const additional = this._formatAdditionalInformation(card)
     if (id % 3 === 0) {
-      passage = 'From ${startingPoint} '
+      passage = `From ${startingPoint}, take ${transport} to ${destinationPoint}. ${additional}`
+    } else {
+      passage = `Take ${transport} from ${startingPoint} to ${destinationPoint}`
+    }
+    console.log(passage)
+
+    return passage
+  }
+
+  _formatTransport (card) {
+    const { transportType, additionalInfo } = card
+    const { id } = additionalInfo
+
+    let message = ``
+
+    // Iterate over available transport
+    // and return string depending
+    // on type
+    switch (transportType) {
+      case 'aircraft':
+      case 'airplane':
+      case 'plane':
+        message = 'flight'
+      break
+      default:
+        message = transportType
+      break
     }
 
+    if (id) {
+      message += ` ${id}`
+    }
+    return message
+  }
+
+  _formatAdditionalInformation (card) {
+    const { additionalInfo } = card
   }
 }
 
@@ -108,6 +146,7 @@ const card = {
   destinationPoint: 'Barcelona',
   transportType: 'train',
   additionalInfo: {
+    id: '78A',
     seat: '45B'
   }
 }
