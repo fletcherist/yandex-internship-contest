@@ -66,8 +66,6 @@ class TripPlanner {
       tables.destinationPoint[card.destinationPoint] = card
     }
 
-    console.log(tables)
-
     for (const key in tables.startingPoint) {
       if (!tables.destinationPoint.hasOwnProperty(key)) {
         this.sortedCards.push(tables.startingPoint[key])
@@ -75,15 +73,13 @@ class TripPlanner {
       }
     }
 
-    for (let i = 0; i < this.sortedCards.length; i++) {
-      const currentDestinationPoint = this.sortedCards[i].destinationPoint
-      const nextCard = tables.startingPoint[currentDestinationPoint]
-      console.log(nextCard)
+    for (let i = 0; i < this.cards.length - 1; i++) {
+      const currentCard = this.sortedCards[i]
+      const nextCard = tables.startingPoint[currentCard.destinationPoint]
       this.sortedCards.push(nextCard)
     }
+
     console.log(this.sortedCards)
-
-
   }
 }
 
