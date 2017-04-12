@@ -39,8 +39,10 @@ const html = trip.renderToHTML()
 // с3.prototype.show = function () {
 //
 // }
-
-console.log(c3('#app'))
+c3('#app')
+  .hide()
+  .show()
+  .toggle()
 
 document.querySelector('#app').innerHTML = html
 
