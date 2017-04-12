@@ -1,5 +1,5 @@
 body {
-  font-family: arial;
+  font-family: 'Helvetica Neue';
 }
 
 .legend {
@@ -27,6 +27,10 @@ body {
 
 .legend__indicator--green {
   background-color: #80CFAB;
+}
+
+.legend__indicator--default {
+  background-color: #E9E9E9;
 }
 
 .legend__label {

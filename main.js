@@ -36,20 +36,18 @@ trip.render()
 
 const html = trip.renderToHTML()
 
-c3('#app')
-  .toggle()
-  .toggle()
-  .addClass('good')
-  .removeClass('good')
-  .add('good')
-  .remove('goood')
-
-console.log(c3('#app').elem)
-
 document.querySelector('#app').innerHTML = html
 
-const spans = document.querySelectorAll('span')
-spans.forEach(span => {
-  // console.log(span)
-  span.style.backgroundColor = 'red'
-})
+function toggleHighlight () {
+  c3(`span[data-transport='1']`)
+    .toggle('legend__indicator--green')
+
+  c3(`span[data-start='1']`)
+    .toggle('legend__indicator--red')
+
+  c3(`span[data-destination='1']`)
+    .toggle('legend__indicator--blue')
+
+  c3(`span[data-additional='1']`)
+    .toggle('legend__indicator--default')
+}
