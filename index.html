@@ -3,14 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Сортировщик карточек путешественника</title>
+    <link rel='stylesheet' href='styles.css' />
     <script src='tripplanner/dist/tripPlanner.min.js'></script>
+    <script src='c3/src/c3.js'></script>
   </head>
   <body>
-    <div>
-      <div>Starting point</div>
-      <div>Destination</div>
-      <div>Transport type</div>
-      <div>Additional Information</div>
+    <div class='legend'>
+      <div class='legend__dogm'>
+        <div class='legend__indicator legend__indicator--red'></div>
+        <div class='legend__label'>Starting point</div>
+      </div>
+      <div class='legend__dogm'>
+        <div class='legend__indicator legend__indicator--blue'></div>
+        <div class='legend__label'>Destination</div>
+      </div>
+      <div class='legend__dogm'>
+        <div class='legend__indicator legend__indicator--green'></div>
+        <div class='legend__label'>Transport type</div>
+      </div>
+      <div class='legend__dogm'>
+        <div class='legend__indicator'></div>
+        <div class='legend__label'>Additional Information</div>
+      </div>
     </div>
     <div id='app'></div>
   </body>

@@ -36,10 +36,16 @@ trip.render()
 
 const html = trip.renderToHTML()
 
+// с3.prototype.show = function () {
+//
+// }
+
+console.log(c3)
 
 document.querySelector('#app').innerHTML = html
 
 const spans = document.querySelectorAll('span')
 spans.forEach(span => {
+  // console.log(span)
   span.style.backgroundColor = 'red'
 })
