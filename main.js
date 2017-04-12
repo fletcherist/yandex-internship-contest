@@ -40,7 +40,7 @@ const html = trip.renderToHTML()
 //
 // }
 
-console.log(c3)
+console.log(c3('#app'))
 
 document.querySelector('#app').innerHTML = html
 
