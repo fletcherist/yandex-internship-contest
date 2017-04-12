@@ -30,5 +30,13 @@
     return this.hide()
   }
 
+  c3.prototype.add = function (className) {
+    this.elem.classList.add(className)
+  }
+
+  c3.prototype.remove = function (className) {
+    this.elem.classList.remove(className)
+  }
+
   return c3
 }, this)
