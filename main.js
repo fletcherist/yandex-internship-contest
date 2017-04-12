@@ -36,13 +36,15 @@ trip.render()
 
 const html = trip.renderToHTML()
 
-// с3.prototype.show = function () {
-//
-// }
 c3('#app')
-  .hide()
-  .show()
   .toggle()
+  .toggle()
+  .addClass('good')
+  .removeClass('good')
+  .add('good')
+  .remove('goood')
+
+console.log(c3('#app').elem)
 
 document.querySelector('#app').innerHTML = html
 
