@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue';
+  font-family: Arial;
 }
 
 span {
@@ -7,16 +7,19 @@ span {
 }
 
 .wrapper {
-  max-width: 80vw;
+  max-width: 70vw;
   margin: 4rem auto;
 }
 
 .label {
-  margin: 1rem;
+  margin: 2rem 1rem 1rem;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
-  font-weight: bold;
+  /*font-weight: bold;*/
   letter-spacing: .4px;
+  color: #37474f;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .legend {
@@ -78,12 +81,18 @@ span {
   outline-width: 0;
   border: 1px solid #90a4ae;
   cursor: pointer;
-  margin: 10px 5px 10px 0px;
-  transition: background-color .1s;
+  margin: 5px 5px 10px 0px;
+  transition: all .2s;
+  color: #37474f;
 }
 
 .button:hover {
   background-color: #eceff1;
+}
+
+.button--active {
+  border-color: #ffc107;
+  background-color: #ffd54f !important;
 }
 
 .action {

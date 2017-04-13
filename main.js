@@ -80,4 +80,6 @@ function toggleHighlight () {
     btn.innerHTML = 'Подсветить'
   }
 
+  c3('#highlight').toggle('button--active')
+
 }
