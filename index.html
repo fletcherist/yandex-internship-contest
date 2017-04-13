@@ -5,6 +5,7 @@
     <title>Сортировщик карточек путешественника</title>
     <link rel='stylesheet' href='styles.css' />
     <script src='tripplanner/dist/tripPlanner.min.js'></script>
+    <script src='cardsGenerator.js'></script>
     <script src='c3/src/c3.js'></script>
   </head>
   <body>
@@ -30,7 +31,7 @@
       </div>
       <div class='label'>Взаимодействие</div>
       <div class='action'>
-        <button id='15cards' class='button' onclick=''>Собрать <b>15</b> карточек</button>
+        <button id='15cards' class='button' onclick='generateAndRender(15)'>Собрать <b>15</b> карточек</button>
         <button id='30cards' class='button' onclick=''><b>100</b> карточек</button>
         <button id='30cards' class='button' onclick=''><b>1К</b> карточек</button>
         <div>

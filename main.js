@@ -28,6 +28,12 @@ const card3 = {
 }
 
 
+function generateAndRender (number) {
+  const cards = cardsGenerator(number)
+  const trip = new TripPlanner(tripCards).planTrip().renderToHTML()
+  document.querySelector('#app').innerHTML = trip
+}
+
 const tripCards = [card2, card, card3]
 
 const planner = new TripPlanner(tripCards)
@@ -60,7 +66,10 @@ const selectors = {
 
 c3('#app div')
   .addClass('instruction')
+
+
 function toggleHighlight () {
+  c3('#highlight').toggle('button--active')
   c3(selectors.transport.sel)
     .toggle(selectors.transport.class)
 
@@ -79,7 +88,4 @@ function toggleHighlight () {
   }  else {
     btn.innerHTML = 'Подсветить'
   }
-
-  c3('#highlight').toggle('button--active')
-
 }
