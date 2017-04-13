@@ -8,26 +8,28 @@
     <script src='c3/src/c3.js'></script>
   </head>
   <body>
-    <div class='legend'>
-      <div class='legend__dogm'>
-        <div class='legend__indicator legend__indicator--red'></div>
-        <div class='legend__label'>Starting point</div>
+    <div class='wrapper'>
+      <div class='legend'>
+        <div class='legend__dogm'>
+          <div class='legend__indicator legend__indicator--red'></div>
+          <div class='legend__label'>Starting point</div>
+        </div>
+        <div class='legend__dogm'>
+          <div class='legend__indicator legend__indicator--blue'></div>
+          <div class='legend__label'>Destination</div>
+        </div>
+        <div class='legend__dogm'>
+          <div class='legend__indicator legend__indicator--green'></div>
+          <div class='legend__label'>Transport type</div>
+        </div>
+        <div class='legend__dogm'>
+          <div class='legend__indicator'></div>
+          <div class='legend__label'>Additional Information</div>
+        </div>
       </div>
-      <div class='legend__dogm'>
-        <div class='legend__indicator legend__indicator--blue'></div>
-        <div class='legend__label'>Destination</div>
-      </div>
-      <div class='legend__dogm'>
-        <div class='legend__indicator legend__indicator--green'></div>
-        <div class='legend__label'>Transport type</div>
-      </div>
-      <div class='legend__dogm'>
-        <div class='legend__indicator'></div>
-        <div class='legend__label'>Additional Information</div>
-      </div>
+      <button class='button' onclick='toggleHighlight()'>Подсветить</button>
+      <div id='app'></div>
     </div>
-    <button onclick='toggleHighlight()'>Подсветить</button>
-    <div id='app'></div>
   </body>
   <script src='main.js'></script>
 </html>

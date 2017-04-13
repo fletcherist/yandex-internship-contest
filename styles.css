@@ -2,12 +2,19 @@ body {
   font-family: 'Helvetica Neue';
 }
 
+.wrapper {
+  max-width: 80vw;
+  margin: 4rem auto;
+}
+
 .legend {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .legend__dogm {
   display: flex;
+  margin: .5rem;
 }
 
 .legend__indicator {
@@ -35,5 +42,22 @@ body {
 
 .legend__label {
   padding: 0 .5rem;
+  margin-top: -3px;
   align-self: center;
 }
+
+.instruction {
+  line-height: 1.4rem;
+}
+
+.button {
+   display: inline-block;
+   position: relative;
+   width: 120px;
+   height: 32px;
+   line-height: 32px;
+   border-radius: 2px;
+   font-size: 0.9em;
+   background-color: #fff;
+   color: #646464;
+ }

@@ -38,6 +38,8 @@ const html = trip.renderToHTML()
 
 document.querySelector('#app').innerHTML = html
 
+c3('#app div')
+  .addClass('instruction')
 function toggleHighlight () {
   c3(`span[data-transport='1']`)
     .toggle('legend__indicator--green')

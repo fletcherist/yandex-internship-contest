@@ -6,12 +6,10 @@
   }
 
   function c3 (selector) {
-
     if (window === this) {
       return new c3(selector)
     }
     this.el = toArray(document.querySelectorAll(selector))
-    console.log(this.el)
 
     // Implement chaining
     return this
@@ -20,16 +18,6 @@
   c3.prototype.first = function () {
     console.log(this.el)
     this.el = this.el.slice(0, 1)
-    return this
-  }
-
-  c3.prototype.hide = function () {
-    this.el.forEach(el => el.style.display = 'none')
-    return this
-  }
-
-  c3.prototype.show = function () {
-    this.el.forEach(el => el.style.display = '')
     return this
   }
 
@@ -52,7 +40,6 @@
       return el.classList.contains(className)
     }
   }
-
 
   c3.prototype.add = c3.prototype.addClass
   c3.prototype.remove = c3.prototype.removeClass
