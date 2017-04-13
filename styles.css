@@ -2,6 +2,10 @@ body {
   font-family: 'Helvetica Neue';
 }
 
+span {
+  transition: background-color .2s;
+}
+
 .wrapper {
   max-width: 80vw;
   margin: 4rem auto;
@@ -54,10 +58,14 @@ body {
    display: inline-block;
    position: relative;
    width: 120px;
-   height: 32px;
-   line-height: 32px;
+   height: 30px;
+   line-height: 20px;
    border-radius: 2px;
-   font-size: 0.9em;
+   font-size: 0.8em;
    background-color: #fff;
    color: #646464;
+   outline-width: 0;
+   border: 1px solid #90a4ae;
+   cursor: pointer;
+   margin: 10px 5px 10px 0px;
  }

@@ -52,4 +52,12 @@ function toggleHighlight () {
 
   c3(`span[data-additional='1']`)
     .toggle('legend__indicator--default')
+
+  const btn = document.querySelector('#highlight')
+  if (c3(`span[data-transport='1']`).hasClass('legend__indicator--green')) {
+    btn.innerHTML = 'Отсветить'
+  }  else {
+    btn.innerHTML = 'Подсветить'
+  }
+
 }
