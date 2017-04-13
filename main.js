@@ -38,23 +38,43 @@ const html = trip.renderToHTML()
 
 document.querySelector('#app').innerHTML = html
 
+
+const selectors = {
+  transport: {
+    sel: `span[data-transport='1']`,
+    class: 'legend__indicator--green'
+  },
+  startingPoint: {
+    sel: `span[data-start='1']`,
+    class: 'legend__indicator--red'
+  },
+  destination: {
+    sel: `span[data-destination='1']`,
+    class: 'legend__indicator--blue'
+  },
+  additionalInfo: {
+    sel: `span[data-additional='1']`,
+    class: 'legend__indicator--default'
+  }
+}
+
 c3('#app div')
   .addClass('instruction')
 function toggleHighlight () {
-  c3(`span[data-transport='1']`)
-    .toggle('legend__indicator--green')
+  c3(selectors.transport.sel)
+    .toggle(selectors.transport.class)
 
-  c3(`span[data-start='1']`)
-    .toggle('legend__indicator--red')
+  c3(selectors.startingPoint.sel)
+    .toggle(selectors.startingPoint.class)
 
-  c3(`span[data-destination='1']`)
-    .toggle('legend__indicator--blue')
+  c3(selectors.destination.sel)
+    .toggle(selectors.destination.class)
 
-  c3(`span[data-additional='1']`)
-    .toggle('legend__indicator--default')
+  c3(selectors.additionalInfo.sel)
+    .toggle(selectors.additionalInfo.class)
 
   const btn = document.querySelector('#highlight')
-  if (c3(`span[data-transport='1']`).hasClass('legend__indicator--green')) {
+  if (c3(selectors.transport.sel).hasClass(selectors.transport.class)) {
     btn.innerHTML = 'Отсветить'
   }  else {
     btn.innerHTML = 'Подсветить'

@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class='wrapper'>
+      <div class='label'>Легенда</div>
       <div class='legend'>
         <div class='legend__dogm'>
           <div class='legend__indicator legend__indicator--red'></div>
@@ -27,8 +28,14 @@
           <div class='legend__label'>Additional Information</div>
         </div>
       </div>
-      <button id='highlight' class='button' onclick='toggleHighlight()'>Подсветить</button>
-      <div id='app'></div>
+      <div class='label'>Взаимодействие</div>
+      <div class='action'>
+        <button id='highlight' class='button' onclick='toggleHighlight()'>Подсветить</button>
+        <button id='15cards' class='button' onclick=''>Собрать <b>15</b> карточек</button>
+        <button id='30cards' class='button' onclick=''>100 карточек</button>
+        <button id='30cards' class='button' onclick=''><b>1К</b> карточек</button>
+      </div>
+      <div id='app' class='app'></div>
     </div>
   </body>
   <script src='main.js'></script>

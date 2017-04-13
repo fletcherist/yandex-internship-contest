@@ -11,9 +11,18 @@ span {
   margin: 4rem auto;
 }
 
+.label {
+  margin: 1rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  letter-spacing: .4px;
+}
+
 .legend {
   display: flex;
   flex-wrap: wrap;
+  padding: 0rem 1rem;
 }
 
 .legend__dogm {
@@ -55,17 +64,32 @@ span {
 }
 
 .button {
-   display: inline-block;
-   position: relative;
-   width: 120px;
-   height: 30px;
-   line-height: 20px;
-   border-radius: 2px;
-   font-size: 0.8em;
-   background-color: #fff;
-   color: #646464;
-   outline-width: 0;
-   border: 1px solid #90a4ae;
-   cursor: pointer;
-   margin: 10px 5px 10px 0px;
- }
+  display: inline-block;
+  position: relative;
+  min-width: 120px;
+  height: 30px;
+  line-height: 20px;
+  border-radius: 2px;
+  font-size: 0.8em;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+  color: #646464;
+  outline-width: 0;
+  border: 1px solid #90a4ae;
+  cursor: pointer;
+  margin: 10px 5px 10px 0px;
+  transition: background-color .1s;
+}
+
+.button:hover {
+  background-color: #eceff1;
+}
+
+.action {
+  padding: 0 1rem;
+}
+
+.app {
+  padding: 1rem 1rem;
+}
