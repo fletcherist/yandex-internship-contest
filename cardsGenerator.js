@@ -27,14 +27,35 @@
         'Colombia', 'São Paulo', 'Rio de Janeiro', 'Chad', 'Bedesa', 'Kenya'
       ]
 
-    const cards = []
-    for (let i = 1; i <= number; i++) {
-      let startingPoint = `${randomFromArray(places)} ${i}`
-      let destinationPoint = ``
-      let first = {
+    const transport = ['bus', 'aircraft', 'plane',
+      'airplane', 'bicycle', 'train', 'airport bus'
+    ]
+
+    let cards = []
+
+    const firstCard = {
+      startingPoint: `${randomFromArray(places)} 0`,
+      destinationPoint: `${randomFromArray(places)} 0`,
+      transportType: `${randomFromArray(transport)}`,
+      additionalInfo: {
+
       }
-      console.log(i)
     }
+    cards.push(firstCard)
+
+    for (let i = 1; i <= number; i++) {
+      let card = {
+        startingPoint: cards[i - 1].destinationPoint,
+        destinationPoint: `${randomFromArray(places)} ${i}`,
+        transportType: `${randomFromArray(transport)}`,
+        additionalInfo: {}
+      }
+      cards.push(card)
+    }
+
+    cards = shuffleArray(cards)
+
+    return cards
   }
 
   return cardsGenerator

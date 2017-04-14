@@ -30,8 +30,11 @@ const card3 = {
 
 function generateAndRender (number) {
   const cards = cardsGenerator(number)
-  const trip = new TripPlanner(tripCards).planTrip().renderToHTML()
+  console.log(cards)
+  const trip = new TripPlanner(cards).planTrip().renderToHTML()
   document.querySelector('#app').innerHTML = trip
+  c3('#app div')
+    .addClass('instruction')
 }
 
 const tripCards = [card2, card, card3]
