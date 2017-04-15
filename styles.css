@@ -62,6 +62,23 @@ span {
   background-color: #E9E9E9;
 }
 
+.legend__label--red {
+  color: #FF8F8F;
+}
+
+.legend__label--green {
+  color: #80CFAB;
+}
+
+.legend__label--blue {
+  color: #7C7CE0;;
+}
+
+.legend__label--default {
+  color: #9a9a9a;
+}
+
+
 .legend__label {
   padding: 0 .5rem;
   margin-top: -3px;
