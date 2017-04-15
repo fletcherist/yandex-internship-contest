@@ -11,6 +11,12 @@ span {
   margin: 4rem auto;
 }
 
+.description {
+  line-height: 150%;
+  color: #37474f;
+  padding: 0 1rem;
+}
+
 .label {
   margin: 2rem 1rem 1rem;
   padding-bottom: 10px;

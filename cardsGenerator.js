@@ -34,8 +34,8 @@
     let cards = []
 
     const firstCard = {
-      startingPoint: `${randomFromArray(places)} 0`,
-      destinationPoint: `${randomFromArray(places)} 0`,
+      startingPoint: `${randomFromArray(places)} (0)`,
+      destinationPoint: `${randomFromArray(places)} (0)`,
       transportType: `${randomFromArray(transport)}`,
       additionalInfo: {
 
@@ -46,7 +46,7 @@
     for (let i = 1; i <= number; i++) {
       let card = {
         startingPoint: cards[i - 1].destinationPoint,
-        destinationPoint: `${randomFromArray(places)} ${i}`,
+        destinationPoint: `${randomFromArray(places)} (${i})`,
         transportType: `${randomFromArray(transport)}`,
         additionalInfo: {}
       }
