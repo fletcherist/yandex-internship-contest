@@ -10,6 +10,23 @@ const $errors = {
   }
 }
 
+/*
+ * Represents the first task
+ * @constructor
+ * @param {array} cards - An array of cards to sort
+ * @method render — returns sorted array of cards
+ * @method renderToHTML - returns sorted array of cards in html
+ *
+ * @card ->
+ *   startingPoint: String, represents the place where it starts
+ *   destinationPoint: String, represents the place where it finishes
+ *   transportType: String, represents the type of the transport
+ *   additionalInfo -> (Not necessary)
+ *     seat: String, represents the number of the seat
+ *     gate: String, represents the number of the gate
+ *     baggage: String, represents where to find the baggage
+ *     [any key]: String, represents any additional stuff, not mentioned
+ */
 class TripPlanner {
   constructor (cards) {
     if (!cards) {
