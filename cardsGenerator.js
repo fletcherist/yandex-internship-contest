@@ -16,8 +16,19 @@
     return arr
   }
 
+  function randomFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   const randomFromArray = array => array[Math.floor(Math.random() * array.length)]
 
+  function generateAdditionalInfo() {
+    const seat = randomFromInterval(1, 100)
+
+    return {
+      seat: seat
+    }
+  }
   function cardsGenerator (number) {
     const places =
       ['Madrid', 'Barcelona', 'Gerona Airport', 'Stockholm', 'Bern',
@@ -37,9 +48,7 @@
       startingPoint: `${randomFromArray(places)} (0)`,
       destinationPoint: `${randomFromArray(places)} (0)`,
       transportType: `${randomFromArray(transport)}`,
-      additionalInfo: {
-
-      }
+      additionalInfo: generateAdditionalInfo()
     }
     cards.push(firstCard)
 
@@ -48,45 +57,14 @@
         startingPoint: cards[i - 1].destinationPoint,
         destinationPoint: `${randomFromArray(places)} (${i})`,
         transportType: `${randomFromArray(transport)}`,
-        additionalInfo: {}
+        additionalInfo: generateAdditionalInfo()
       }
       cards.push(card)
     }
 
     cards = shuffleArray(cards)
-
     return cards
   }
 
   return cardsGenerator
 })
-
-
-// const card = {
-//   startingPoint: 'Madrid',
-//   destinationPoint: 'Barcelona',
-//   transportType: 'train',
-//   additionalInfo: {
-//     id: '78A',
-//     seat: '45B'
-//   }
-// }
-//
-// const card2 = {
-//   startingPoint: 'Barcelona',
-//   destinationPoint: 'Gerona Airport',
-//   transportType: 'airport bus',
-//   additionalInfo: {
-//   }
-// }
-//
-// const card3 = {
-//   startingPoint: 'Gerona Airport',
-//   destinationPoint: 'Stockholm',
-//   transportType: 'aircraft',
-//   additionalInfo: {
-//     gate: '45B',
-//     seat: '3A',
-//     baggage: '344'
-//   }
-// }
