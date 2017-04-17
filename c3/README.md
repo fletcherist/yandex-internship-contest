@@ -6,8 +6,9 @@
 
 ### Реализованные методы
 
-el — String, ex. '#el', '.elements', 'p'
-className — String
+> **el** — String, ex. '#el', '.elements', 'p'
+
+> **className** — String
 
 `c3(el).addClass(className)`
 
